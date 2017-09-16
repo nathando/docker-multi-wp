@@ -1,0 +1,21 @@
+version: '2'
+services:
+  db${index}:
+    image: mysql:5.7
+    volumes:
+      - vol${index}:/var/lib/mysql
+    restart: always
+    env_file: wp_configs/${site}/db.env
+
+  wp${index}:
+    depends_on:
+      - db${index}
+    image: wordpress:latest
+    ports:
+      - "${port}:80"
+    restart: always
+    env_file: wp_configs/${site}/wp.env
+    volumes:
+      - ./wp_storage/${site}/:/var/www/html/
+volumes:
+  vol${index}:
