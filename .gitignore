@@ -1,4 +1,2 @@
-wp_configs/**
-wp_storage/**
-!wp_configs/.gitkeep
-!wp_storage/.gitkeep
+wps/**
+!wps/.gitkeep

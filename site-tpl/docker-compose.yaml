@@ -5,7 +5,7 @@ services:
     volumes:
       - vol${index}:/var/lib/mysql
     restart: always
-    env_file: wp_configs/${site}/db.env
+    env_file: ./db.env
 
   wp${index}:
     depends_on:
@@ -14,8 +14,8 @@ services:
     ports:
       - "${port}:80"
     restart: always
-    env_file: wp_configs/${site}/wp.env
+    env_file: ./wp.env
     volumes:
-      - ./wp_storage/${site}/:/var/www/html/
+      - ./code:/var/www/html
 volumes:
   vol${index}:
